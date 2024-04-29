@@ -1,0 +1,20 @@
+service: backend
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  profile: me
+  region: ap-east-1
+  httpApi:
+    cors: true
+  runtime: nodejs18.x
+
+plugins:
+  - serverless-offline
+
+functions:
+  api:
+    handler: index.handler
+    timeout: 20
+    events:
+      - httpApi: '*'
